@@ -14,6 +14,11 @@
 	    background-color: #4a4a4f;
 	}
 	
+    .dropdown {
+    	width: 150px;
+        position: relative;
+    }
+    
 	button {
 	    border: none;
 	    background-color: #0997d3;
@@ -21,49 +26,64 @@
 	    height: 50px;
 	    color: #fff;
 	    text-transform: uppercase;
-	    cursor: pointer;
+	    cursor: pointer; /* mouse changes from arrowhand to hand */
 	}
 	
 	.dropdownMenu{
 	    list-style: none;
-	    margin:0;
+	    margin: 0;
 	    padding: 0;
 	    position: absolute;
 	    left: 0;
 	    right: 0;
-	    top: 50px;
+	    top: 50px; /* button is 50px high */
 	    width: 150px;
 	    text-align: center;
 	    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.2);
+        transform: translateY(-100%); /* hide list by default */
+        z-index: -1;
+        transition: transform .5s;
 	}
 	
-	/*.dropdownLink {
+	.dropdownLink {
 	    text-decoration: none;
-	   display: block;
+        color: #4a4a4f;	    
 	    background-color: #f9f9f9;
-	    color: #4a4a4f;
+	    display: block; /* needed so inline <a> element can have padding */
 	    padding: 10px 5px;
 	    transition: background-color .5s ease-in-out, color .5s ease-in-out;
-	}*/
+	}
 
-	/*.dropdownLink:hover {
+	.dropdownLink:hover {
 	    color: #fff;
 	    background-color: #a0a0a3;
-	}*/
+	}
+    
+    .dropdown:hover button { /* note targeting the button */
+    	background-color: #018ec5; /* subtle color change */
+    }
+    
+    .dropdown:hover .dropdownMenu { /* note targeting the list */
+    	transform: translateY(0); /* bring list into view */
+    }
 	</style>
 </head>
 
 <body>
 	<nav class="navDefault">
         
+        <div class="dropdown">
+        
         <button>Dropdown</button>
-    
+    	
         <ul class="dropdownMenu">
-            <li class="dropdownItem"><a href="#" class="dropdownLink">Link</a></li>
+        	<li class="dropdownItem"><a href="#" class="dropdownLink">Link</a></li>
             <li class="dropdownItem"><a href="#" class="dropdownLink">Link</a></li>
             <li class="dropdownItem"><a href="#" class="dropdownLink">Link</a></li>
             <li class="dropdownItem"><a href="#" class="dropdownLink">Link</a></li>
         </ul>
+        
+        </div>
         
     </nav>
 </body>
